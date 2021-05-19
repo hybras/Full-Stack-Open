@@ -14,7 +14,7 @@ sequenceDiagram
     participant server
 
     browser->>server: POST /exampleapp/new_note
-    server-->>browser: REDIRECT /exampleapp/notes
+    server-->>browser: 302 REDIRECT /exampleapp/notes
 
     browser->>server: GET /exampleapp/notes
     server-->>browser: HTML-code
@@ -57,4 +57,17 @@ sequenceDiagram
     server-->>browser: [{ content: "HTML is easy", date: "2019-05-23" }, ...]
 
     note over browser: browser executes the event handler that renders notes to display
+```
+
+## 6 : POST /exampleapp/new_note
+
+```mermaid
+sequenceDiagram
+    participant browser
+    participant server
+
+    note over browser: browser adds the note to its own copy of list, redraws the list
+
+    browser->>server: POST /exampleapp/new_note
+    server-->>browser: 201 CREATED {"message":"note created"}
 ```
