@@ -34,6 +34,8 @@ sequenceDiagram
     note over browser: browser executes the event handler that renders notes to display
 ```
 
+![Diagram](4.svg)
+
 ## 5: GET /exampleapp/spa
 
 ```mermaid
@@ -59,6 +61,8 @@ sequenceDiagram
     note over browser: browser executes the event handler that renders notes to display
 ```
 
+![Diagram](5.svg)
+
 ## 6 : POST /exampleapp/new_note
 
 ```mermaid
@@ -71,3 +75,5 @@ sequenceDiagram
     browser->>server: POST /exampleapp/new_note
     server-->>browser: 201 CREATED {"message":"note created"}
 ```
+
+![Diagram](6.svg)
