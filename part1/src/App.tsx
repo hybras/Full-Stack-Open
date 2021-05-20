@@ -1,27 +1,21 @@
 import React from 'react'
 
-
-class Course {
-  name: String = ""
-  parts: { name: String, exercises: number }[] = []
-}
-
-const Header = (props: { course: Course }) => (<div>
-  <h1>{props.course.name}</h1>
+const Header = ({ course }) => (<div>
+  <h1>{course.name}</h1>
 </div>)
 
-const Part = (props: { name: String, exercise: number }) => (
-  <p>{props.name} {props.exercise}</p>
+const Part = ({ name, exercise }) => (
+  <p>{name} {exercise}</p>
 )
 
-const Footer = (props: { course: Course }) => (
-  <p>Number of exercises {props.course.parts.map(it => it.exercises).reduce((acc, it) => acc + it, 0)}</p>
+const Footer = ({ course }) => (
+  <p>Number of exercises {course.parts.map(it => it.exercises).reduce((acc, it) => acc + it, 0)}</p>
 )
 
 
 
-const Content = (props: { course: Course }) => {
-  const parts = props.course.parts
+const Content = ({ course }) => {
+  const parts = course.parts
   return (<div>
     <Part name={parts[0].name} exercise={parts[0].exercises} />
     <Part name={parts[1].name} exercise={parts[1].exercises} />
@@ -54,7 +48,6 @@ const App = () => {
       <Header course={course} />
       <Content course={course} />
       <Footer course={course} />
-
     </div>
   )
 }
