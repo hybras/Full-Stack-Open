@@ -13,6 +13,13 @@ const GiveFeedback = ({ onClicks }) => (<div>
   <Button text="bad" onClick={onClicks[2]} />
 </div>)
 
+const Statistic = ({ name, val }) =>
+(<tr>
+  <td>{name}</td>
+  <td>{val}</td>
+</tr>)
+
+
 const Statistics = ({ good, bad, neutral }) => {
   const all = good + neutral + bad
   if (all === 0) {
@@ -29,30 +36,12 @@ const Statistics = ({ good, bad, neutral }) => {
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>Good</td>
-          <td>{good}</td>
-        </tr>
-        <tr>
-          <td>Neutral</td>
-          <td>{neutral}</td>
-        </tr>
-        <tr>
-          <td>Bad</td>
-          <td>{bad}</td>
-        </tr>
-        <tr>
-          <td>All</td>
-          <td>{all}</td>
-        </tr>
-        <tr>
-          <td>Avg</td>
-          <td>{avg}</td>
-        </tr>
-        <tr>
-          <td>Positive</td>
-          <td>{pos}</td>
-        </tr>
+        <Statistic name="Good" val={good} />
+        <Statistic name="Neutral" val={neutral} />
+        <Statistic name="Bad" val={bad} />
+        <Statistic name="All" val={all} />
+        <Statistic name="Avg" val={avg} />
+        <Statistic name="Positive" val={pos} />
       </tbody>
     </table>
   </div>)
