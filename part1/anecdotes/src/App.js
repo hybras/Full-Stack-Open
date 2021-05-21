@@ -15,10 +15,19 @@ const App = () => {
   const new_idx = () => rand_in_range(anecdotes.length)
 
   const [selected, setSelected] = useState(new_idx())
+  const [votes, setVotes] = useState(new Array(anecdotes.length).fill(0))
+
+  const inc_vote = () => {
+    const new_votes = [...votes]
+    new_votes[selected] += 1
+    setVotes(new_votes)
+  }
 
   return (
     <div>
-      {anecdotes[selected]}<br />
+      {anecdotes[selected]}      <p>has {votes[selected]} votes</p>
+      <br />
+      <button onClick={inc_vote}>Vote!</button>
       <button onClick={() => setSelected(new_idx())}>Next Anecdote</button>
     </div>
   )
