@@ -15,6 +15,9 @@ const GiveFeedback = ({ onClicks }) => (<div>
 
 const Statistics = ({ good, bad, neutral }) => {
   const all = good + neutral + bad
+  if (all === 0) {
+    return (<div><p>No Feedback Given</p></div>)
+  }
   const avg = (good - bad) / (good + neutral + bad)
   const pos = (good) / (good + neutral + bad)
   return (<div>
