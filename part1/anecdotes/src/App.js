@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 
+const rand_in_range = (maxExclusive) => Math.trunc(Math.random() * maxExclusive)
+
 const App = () => {
   const anecdotes = [
     'If it hurts, do it more often',
@@ -10,11 +12,14 @@ const App = () => {
     'Debugging is twice as hard as writing the code in the first place. Therefore, if you write the code as cleverly as possible, you are, by definition, not smart enough to debug it.'
   ]
 
-  const [selected, setSelected] = useState(0)
+  const new_idx = () => rand_in_range(anecdotes.length)
+
+  const [selected, setSelected] = useState(new_idx())
 
   return (
     <div>
-      {anecdotes[selected]}
+      {anecdotes[selected]}<br />
+      <button onClick={() => setSelected(new_idx())}>Next Anecdote</button>
     </div>
   )
 }
