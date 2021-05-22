@@ -5,9 +5,15 @@ const AddPerson = ({ persons, setPersons }) => {
 
     const addPerson = (event) => {
         event.preventDefault()
-        const new_persons = [...persons].concat({ name: newName })
-        setPersons(new_persons)
-        setNewName('')
+        if (persons.map(it => it.name).includes(newName)) {
+            alert(`${newName} is already in the phonebook`)
+        } else {
+            const new_person = { name: newName }
+            console.log(new_person)
+            const new_persons = [...persons].concat(new_person)
+            setPersons(new_persons)
+            setNewName('')
+        }
     }
 
     const onChange = (event) => {
