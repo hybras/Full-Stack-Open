@@ -1,4 +1,4 @@
-const People = ({ persons }) => {
+const People = ({ persons, search }) => {
     return (<div>
         <h2>Numbers</h2>
         <table>
@@ -9,7 +9,7 @@ const People = ({ persons }) => {
                 </tr>
             </thead>
             <tbody>
-                {persons.map(it => <tr key={it.name}>
+                {persons.filter(it => it.name.indexOf(search.toLowerCase()) > -1).map(it => <tr key={it.name}>
                     <td>{it.name}</td>
                     <td>{it.number}</td>
                 </tr>)}
