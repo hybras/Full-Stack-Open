@@ -1,5 +1,6 @@
 const People = ({ persons }) => {
     return (<div>
+        <h2>Numbers</h2>
         <table>
             <thead>
                 <tr>

@@ -38,8 +38,6 @@ const AddPerson = ({ persons, setPersons }) => {
                     <button type="submit">add</button>
                 </div>
             </form>
-            <h2>Numbers</h2>
-            {}
         </div>
     )
 }
