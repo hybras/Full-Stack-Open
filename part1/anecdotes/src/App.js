@@ -2,6 +2,19 @@ import React, { useState } from 'react'
 
 const rand_in_range = (maxExclusive) => Math.trunc(Math.random() * maxExclusive)
 
+const zip = (a, b) => a.map((k, i) => [k, b[i]])
+
+const Anecdote = ({ title, text, votes }) => (<div><h2>{title}</h2>{text}<p>has {votes} votes</p></div>)
+
+const Winner = ({ anecdotes_with_votes }) => {
+
+  const winner = anecdotes_with_votes.sort((a, b) => { return a.vote - b.vote })[anecdotes_with_votes.length - 1]
+  console.log(anecdotes_with_votes)
+  const { anec, vote } = winner
+
+  return Anecdote({ title: "Anecdote with the most votes", text: anec, votes: vote })
+}
+
 const App = () => {
   const anecdotes = [
     'If it hurts, do it more often',
@@ -17,6 +30,8 @@ const App = () => {
   const [selected, setSelected] = useState(new_idx())
   const [votes, setVotes] = useState(new Array(anecdotes.length).fill(0))
 
+  const as_obj = zip(anecdotes, votes).map(([anec, vote]) => { return { anec, vote } })
+
   const inc_vote = () => {
     const new_votes = [...votes]
     new_votes[selected] += 1
@@ -25,10 +40,10 @@ const App = () => {
 
   return (
     <div>
-      {anecdotes[selected]}      <p>has {votes[selected]} votes</p>
-      <br />
+      <Anecdote text={anecdotes[selected]} votes={votes[selected]} title="Anecdote of the Day" />
       <button onClick={inc_vote}>Vote!</button>
       <button onClick={() => setSelected(new_idx())}>Next Anecdote</button>
+      <Winner anecdotes_with_votes={as_obj} />
     </div>
   )
 }
