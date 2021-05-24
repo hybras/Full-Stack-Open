@@ -1,3 +1,5 @@
+import Country from "./Country"
+
 const Matches = ({ query, countries }) => {
     if (query !== "") {
         const filteredCountries = countries.filter(
@@ -19,30 +21,7 @@ const Matches = ({ query, countries }) => {
         else if (filteredCountries.length === 1) {
             const country = filteredCountries[0]
 
-            return (<div>
-                <h2>{country.name}</h2>
-                <img src={country.flag} alt={`${country.name}'s flag`}></img>
-                <table>
-                    <tbody>
-                        <tr>
-                            <td>Capital</td>
-                            <td>{country.capital}</td>
-                        </tr>
-                        <tr>
-                            <td>Population</td>
-                            <td>{country.population}</td>
-                        </tr>
-                        <tr>
-                            <td>Languages</td>
-                            <td>
-                                <ul>
-                                    {country.languages.map(it => it.name).map(it => <li key={`${country.name}: ${it}`}>{it}</li>)}
-                                </ul>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>)
+            return <Country country={country}/>
         }
     }
     return (<div>
