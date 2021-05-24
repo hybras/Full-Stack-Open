@@ -1,3 +1,5 @@
+import Weather from "./Weather";
+
 const Country = ({ country }) => (<div>
     <h2>{country.name}</h2>
     <img src={country.flag} alt={`${country.name}'s flag`} height={100}></img>
@@ -21,6 +23,7 @@ const Country = ({ country }) => (<div>
             </tr>
         </tbody>
     </table>
+    <Weather country={country} />
 </div>)
 
 export default Country

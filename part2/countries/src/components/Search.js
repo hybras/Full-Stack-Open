@@ -10,7 +10,7 @@ const Search = () => {
         axios
             .get('https://restcountries.eu/rest/v2/all')
             .then(resp => { setCountries(resp.data) })
-    })
+    }, [])
     return (<div>
         Find Countries <input value={query} onChange={(ev) => { return setQuery(ev.target.value) }} />
         <Matches query={query} countries={countries} setQuery={setQuery} />
