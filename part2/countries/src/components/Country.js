@@ -1,6 +1,6 @@
 const Country = ({ country }) => (<div>
     <h2>{country.name}</h2>
-    <img src={country.flag} alt={`${country.name}'s flag`}></img>
+    <img src={country.flag} alt={`${country.name}'s flag`} height={100}></img>
     <table>
         <tbody>
             <tr>
