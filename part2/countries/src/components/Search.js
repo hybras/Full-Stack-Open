@@ -13,7 +13,7 @@ const Search = () => {
     })
     return (<div>
         Find Countries <input value={query} onChange={(ev) => { return setQuery(ev.target.value) }} />
-        <Matches query={query} countries={countries}/>
+        <Matches query={query} countries={countries} setQuery={setQuery} />
     </div>)
 }
 
