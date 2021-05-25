@@ -24,7 +24,7 @@ const App = () => {
   return (<div>
     <AddPerson persons={persons} addPerson={addPerson} />
     <Search search={search} setSearch={setSearch} />
-    <People persons={persons} search={search} />
+    <People persons={persons} search={search} setPersons={setPersons} />
   </div>)
 }
 
