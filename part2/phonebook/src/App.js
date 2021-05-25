@@ -9,10 +9,11 @@ const App = () => {
   const [persons, setPersons] = useState([])
   const [search, setSearch] = useState('')
 
-  const addPerson = new_person => {
-    const new_persons = [...persons].concat(new_person)
-    setPersons(new_persons)
-    Phonebook.create(new_person)
+
+  const updatePerson = person => {
+    const id = persons.find(it => it.name === person.name).id
+    Phonebook.update(id, person)
+    setPersons(persons.map(it => it.id === id ? person : it))
   }
 
   useEffect(() => {
