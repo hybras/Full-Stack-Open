@@ -9,7 +9,7 @@ const People = ({ persons, search }) => {
                 </tr>
             </thead>
             <tbody>
-                {persons.filter(it => it.name.indexOf(search.toLowerCase()) > -1).map(it => <tr key={it.name}>
+                {persons.filter(it => it.name.indexOf(search.toLowerCase()) > -1).map(it => <tr key={it.id}>
                     <td>{it.name}</td>
                     <td>{it.number}</td>
                 </tr>)}

@@ -1,18 +1,17 @@
 import React, { useState } from 'react'
 
-const AddPerson = ({ persons, setPersons }) => {
+const AddPerson = ({ persons, addPerson }) => {
     const [name, setName] = useState('')
     const [number, setNumber] = useState('')
 
-    const addPerson = (event) => {
+    const myAddPerson = (event) => {
         event.preventDefault()
         if (persons.map(it => it.name).includes(name)) {
             alert(`${name} is already in the phonebook`)
         } else {
             const new_person = { name, number }
             console.log(new_person)
-            const new_persons = [...persons].concat(new_person)
-            setPersons(new_persons)
+            addPerson(new_person)
             setName('')
         }
     }
@@ -28,7 +27,7 @@ const AddPerson = ({ persons, setPersons }) => {
     return (
         <div>
             <h2>Phonebook</h2>
-            <form onSubmit={addPerson}>
+            <form onSubmit={myAddPerson}>
                 <div>
                     name: <input value={name} onChange={onNameChange} />
                     <br />
