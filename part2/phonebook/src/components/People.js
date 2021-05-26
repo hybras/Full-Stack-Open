@@ -33,11 +33,12 @@ const People = ({ persons, setPersons }) => {
                 </tr>
             </thead>
             <tbody>
-                {persons.filter(it => it.name.indexOf(search.toLowerCase()) > -1).map(it => <tr key={it.id}>
+                {persons.filter(it => it.name.toLowerCase().indexOf(search.toLowerCase()) > -1).map(it => <tr key={it.id}>
                     <td>{it.name}</td>
                     <td>{it.number}</td>
                     <td><button onClick={() => onDelete(it.id)}>delete</button></td>
-                </tr>)}
+                </tr>)
+                }
             </tbody>
         </table>
     </div>)
