@@ -5,6 +5,8 @@ import Phonebook from '../services/Phonebook'
 const AddPerson = ({ persons, setPersons }) => {
     const [name, setName] = useState('')
     const [number, setNumber] = useState('')
+    const [msg_or_err, setIsMsg] = useState(true)
+    const [msg, setMsg] = useState(null)
 
     const reset = () => {
         setName('')
@@ -77,6 +79,7 @@ const AddPerson = ({ persons, setPersons }) => {
                     <button type="submit">add</button>
                 </div>
             </form>
+            <Notification message={msg} msg_or_err={msg_or_err} />
         </div>
     )
 }
