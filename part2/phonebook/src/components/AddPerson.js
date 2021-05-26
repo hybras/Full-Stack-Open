@@ -1,11 +1,44 @@
 import React, { useState } from 'react'
-const AddPerson = ({ persons, addPerson, updatePerson }) => {
+import Notification from './Notification'
+import Phonebook from '../services/Phonebook'
+
+const AddPerson = ({ persons, setPersons }) => {
     const [name, setName] = useState('')
     const [number, setNumber] = useState('')
 
     const reset = () => {
         setName('')
         setNumber('')
+    }
+
+    const addPerson = person => {
+        Phonebook.create(person).then(new_person => {
+            console.log(new_person)
+            const new_persons = persons.concat(new_person)
+            setPersons(new_persons)
+            setMsg(`${person.name} was created`)
+            setIsMsg(true)
+            setTimeout(() => setMsg(null), 5000)
+        }).catch(() => {
+            setMsg(`${person.name} couldn't be added`)
+            setIsMsg(false)
+            setTimeout(() => setMsg(null), 5000)
+        })
+    }
+
+    const updatePerson = person => {
+        const id = persons.find(it => it.name === person.name).id
+        Phonebook.update(id, person).then(() => {
+            setPersons(persons.map(it => it.id === id ? person : it))
+            setMsg(`${person.name} was updated`)
+            setIsMsg(true)
+            setTimeout(() => setMsg(null), 5000)
+        }).catch(() => {
+            setMsg(`${person.name} couldn't be updated`)
+            setIsMsg(false)
+            setTimeout(() => setMsg(null), 5000)
+        })
+
     }
 
     const handler = (event) => {
