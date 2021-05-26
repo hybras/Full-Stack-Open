@@ -5,7 +5,7 @@ const Search = ({ search, setSearch }) => {
     }
 
     return (<div>
-        <h2>Search</h2>
+        <h3>Search</h3>
         Search term: <input value={search} onChange={onChange} />
     </div>)
 }

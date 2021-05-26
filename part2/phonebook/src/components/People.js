@@ -1,11 +1,13 @@
 import { useState } from "react"
 import Phonebook from "../services/Phonebook"
 import Notification from "./Notification"
+import Search from './Search'
 
-const People = ({ persons, search, setPersons }) => {
+const People = ({ persons, setPersons }) => {
 
     const [msg_or_err, setIsMsg] = useState(true)
     const [msg, setMsg] = useState(null)
+    const [search, setSearch] = useState('')
 
 
     const onDelete = person_id => {
@@ -21,6 +23,7 @@ const People = ({ persons, search, setPersons }) => {
     }
     return (<div>
         <h2>Numbers</h2>
+        <Search search={search} setSearch={setSearch} />
         <Notification message={msg} msg_or_err={msg_or_err} />
         <table>
             <thead>
