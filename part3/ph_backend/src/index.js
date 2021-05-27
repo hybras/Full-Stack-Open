@@ -39,6 +39,19 @@ app.get('/api/persons/:id', (request, response) => {
     }
 })
 
+app.delete('/api/persons/:id', (request, response) => {
+    const id = Number(request.params.id)
+    const person = persons.find(it => it.id === id)
+    const new_persons = persons.filter(it => it.id !== id)
+    if (person) {
+        persons = new_persons
+        response.json(person)
+    }
+    else {
+        response.status(204).end()
+    }
+})
+
 app.get('/info', (req, resp) => {
     resp.send(`There are ${persons.length} people in the phonebook`)
 })
