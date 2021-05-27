@@ -58,9 +58,17 @@ app.delete('/api/persons/:id', (request, response) => {
 
 app.post('/api/persons', (req, res) => {
     const perp = req.body
+    if (!perp.name || !perp.number) {
+        return response.status(400).json({
+            error: 'name or number missing'
+        })
+    }
+    const contains = persons.find(it => it.name === perp.name)
+    if (contains) {
+        return res.status(400).json({ error: `${perp.name} is already present` })
+    }
     const id = nanoid()
     const person = { id, ...perp }
-    console.log('Person: ', perp)
     persons = persons.concat(person)
     res.json(person)
 })
