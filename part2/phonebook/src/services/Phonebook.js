@@ -22,7 +22,8 @@ const delete_p = id =>
         .delete(`${baseUrl}/${id}`)
         .then(response => response.data)
 
-
-export default {
+const Phonebook = {
     all, create, update, delete_p
 }
+
+export default Phonebook
