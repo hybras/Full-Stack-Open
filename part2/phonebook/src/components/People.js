@@ -16,7 +16,7 @@ const People = ({ persons, setPersons }) => {
             setMsg(`Successful Deletion`)
             setIsMsg(true)
         }).catch(() => {
-            setMsg(` Deletion failed`)
+            setMsg(`Deletion failed`)
             setIsMsg(false)
         })
 
