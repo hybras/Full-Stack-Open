@@ -1,9 +1,12 @@
 const express = require('express')
 const { nanoid } = require('nanoid')
 const morgan = require('morgan')
+const cors = require('cors')
+
 
 const app = express()
 
+app.use(cors())
 app.use(express.json())
 morgan.token('body', (req) => {
     if (req.method === 'POST')
@@ -11,7 +14,6 @@ morgan.token('body', (req) => {
     else return ''
 })
 app.use(morgan(':method :url :status :res[content-length] - :response-time ms :body'))
-
 
 let persons = [
     {
@@ -85,7 +87,7 @@ app.get('/info', (req, resp) => {
     resp.send(`There are ${persons.length} people in the phonebook`)
 })
 
-const PORT = 3001
+const PORT = process.env.PORT || 3001
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`)
 })
