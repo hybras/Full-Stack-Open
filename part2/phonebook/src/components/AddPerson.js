@@ -15,7 +15,6 @@ const AddPerson = ({ persons, setPersons }) => {
 
     const addPerson = person => {
         Phonebook.create(person).then(new_person => {
-            console.log(new_person)
             const new_persons = persons.concat(new_person)
             setPersons(new_persons)
             setMsg(`${person.name} was created`)
