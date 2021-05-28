@@ -30,7 +30,7 @@ const AddPerson = ({ persons, setPersons }) => {
     const updatePerson = person => {
         const id = persons.find(it => it.name === person.name).id
         Phonebook.update(id, person).then(() => {
-            setPersons(persons.map(it => it.id === id ? person : it))
+            setPersons(persons.map(it => it.id === id ? { ...person, id } : it))
             setMsg(`${person.name} was updated`)
             setIsMsg(true)
             setTimeout(() => setMsg(null), 5000)
