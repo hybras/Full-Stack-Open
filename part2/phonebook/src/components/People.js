@@ -18,6 +18,12 @@ const People = ({ persons, setPersons }) => {
         }).catch(() => {
             setMsg(`Deletion failed`)
             setIsMsg(false)
+        }).finally(() => {
+            setTimeout( () => {
+                setMsg(null)
+                setIsMsg(false)
+            }, 5000)
+
         })
 
     }
