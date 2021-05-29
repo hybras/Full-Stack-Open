@@ -20,8 +20,8 @@ const AddPerson = ({ persons, setPersons }) => {
             setMsg(`${person.name} was created`)
             setIsMsg(true)
             setTimeout(() => setMsg(null), 5000)
-        }).catch(() => {
-            setMsg(`${person.name} couldn't be added`)
+        }).catch((err) => {            
+            setMsg(`${person.name} couldn't be added. ${err.response.data.error}`)
             setIsMsg(false)
             setTimeout(() => setMsg(null), 5000)
         })

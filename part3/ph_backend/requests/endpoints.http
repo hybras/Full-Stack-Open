@@ -8,6 +8,18 @@ Content-Type: application/json
      "number": "1"
 }
 
+###
+
+# Add a person with a too short name
+
+POST http://localhost:3001/api/persons 
+Content-Type: application/json
+
+{
+    "name": "Y",
+     "number": "1"
+}
+
 ### 
 
 # Get everyone

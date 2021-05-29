@@ -43,7 +43,9 @@ const routes = (app) => {
         }
 
 
-        Person.findByIdAndUpdate(id, person, { new: true })
+        Person.findByIdAndUpdate(id, person, {
+            new: true, runValidators: true, context: 'query'
+        })
             .then(person => res.json(person))
             .catch(next)
     })
