@@ -6,10 +6,11 @@ const db = require('./db')
 
 const app = express()
 
-db()
-middleware(app)
+db().then(() => {
+    middleware(app)
 
-const PORT = process.env.PORT
-app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`)
+    const PORT = process.env.PORT
+    app.listen(PORT, () => {
+        console.log(`Server running on port ${PORT}`)
+    })
 })
