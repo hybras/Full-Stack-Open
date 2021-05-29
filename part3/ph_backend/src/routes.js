@@ -68,7 +68,7 @@ const routes = (app) => {
     })
 
     app.get('/info', (req, res) => {
-        Person.count((err, count) => res.send(`There are ${count} people in the phonebook`))
+        Person.countDocuments((err, count) => res.send(`There are ${count} people in the phonebook`))
     })
 }
 
