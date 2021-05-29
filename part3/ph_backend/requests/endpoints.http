@@ -1,0 +1,43 @@
+# Add a person
+
+POST http://localhost:3001/api/persons 
+Content-Type: application/json
+
+{
+    "name": "Ymir Fritz",
+     "number": "1"
+}
+
+### 
+
+# Get everyone
+GET http://localhost:3001/api/persons 
+Content-Type: application/json
+
+###
+
+# Get the one person we added
+GET http://localhost:3001/api/persons/60b17a33e4d5504f20427ede
+
+###
+
+# Edit Someone
+
+PUT  http://localhost:3001/api/persons/60b1822713716d2008bf2488
+Content-Type: application/json
+
+{
+    "name": "casca highbottom",
+    "number": "dead"
+}
+
+###
+
+# Edit the id of the deleted person to match what was returned by the POST above
+
+DELETE http://localhost:3001/api/persons/60b17a33e4d5504f20427ede
+
+###
+
+# Get the number of persons
+GET http://localhost:3001/info
