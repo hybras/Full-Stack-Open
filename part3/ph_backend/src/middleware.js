@@ -1,9 +1,11 @@
+const logging = require('./logging')
+
 const unknownEndpoint = (req, res) => {
   res.status(404).send({ error: 'unknown endpoint' })
 }
 
 const errorHandler = (err, req, res, next) => {
-  console.error(err.message)
+  logging.error(err.message)
 
   if (err.name === 'CastError') {
     return res.status(400).json({ error: 'malformed id' })
