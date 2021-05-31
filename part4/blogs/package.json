@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "nodemon src/index.js",
     "lint": "eslint src",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest --verbose"
   },
   "author": "hybras",
   "license": "ISC",
@@ -25,6 +25,10 @@
     "eslint-plugin-import": "^2.23.3",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^5.1.0",
+    "jest": "^27.0.3",
     "nodemon": "^2.0.7"
+  },
+  "jest": {
+    "testEnvironment": "node"
   }
 }
