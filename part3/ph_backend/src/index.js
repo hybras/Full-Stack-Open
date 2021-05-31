@@ -1,6 +1,6 @@
 const config = require('./config')
 const app = require('./app')
-const db = require('./db')
+const db = require('./database')
 const logging = require('./logging')
 
 db().then(() => {
