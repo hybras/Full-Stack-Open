@@ -2,7 +2,7 @@ const morgan = require('morgan')
 const cors = require('cors')
 const express = require('express')
 
-const routes = require('./routes')
+const personRouter = require('./routes')
 
 const middleware = (app) => {
   app.use(express.static('build'))
@@ -13,7 +13,7 @@ const middleware = (app) => {
   })
   app.use(morgan(':method :url :status :res[content-length] - :response-time ms :body'))
 
-  routes(app)
+  app.use('/api/persons', personRouter)
 
   const unknownEndpoint = (req, res) => {
     res.status(404).send({ error: 'unknown endpoint' })
