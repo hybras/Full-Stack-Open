@@ -1,6 +1,10 @@
 const app = require('./app')
-const config = require('./config')
+const config = require('./utils/config')
+const initDB = require('./utils/database')
+const log = require('./utils/logging')
 
-app.listen(config.PORT, () => {
-  console.log(`Server running on port ${config.PORT}`)
+initDB().then(() => {
+  app.listen(config.PORT, () => {
+    log.info(`Server running on port ${config.PORT}`)
+  })
 })
