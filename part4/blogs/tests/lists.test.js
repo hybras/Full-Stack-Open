@@ -72,3 +72,10 @@ test('favorite blog', () => {
     title: 'Canonical string reduction'
   })
 })
+
+test('most blogs', () => {
+  expect(listHelper.mostBlogs(blogs)).toEqual({
+    author: 'Robert C. Martin',
+    blogs: 3
+  })
+})
