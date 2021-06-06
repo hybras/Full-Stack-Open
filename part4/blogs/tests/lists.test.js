@@ -79,3 +79,10 @@ test('most blogs', () => {
     blogs: 3
   })
 })
+
+test('most likes', () => {
+  expect(listHelper.mostLikes(blogs)).toEqual({
+    author: 'Edsger W. Dijkstra',
+    likes: 17
+  })
+})
